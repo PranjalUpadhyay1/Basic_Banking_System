@@ -1,0 +1,32 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+#navbarSupportedContent {
+  float: right;
+}
+
+footer {
+  background-color: #343a40;
+  padding: 25px;
+}
+
+.banner3 {
+  background-image: url("imgs/view.jpg");
+}
+
+.wht {
+  color: white;
+}
+
+.carousel.carousel-fade .carousel-item {
+  display: block;
+  opacity: 0;
+  transition: opacity ease-out 0.7s;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+  opacity: 1 !important;
+}

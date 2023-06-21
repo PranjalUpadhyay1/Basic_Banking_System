@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/moneytransfer.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imgs/bank.png" type="image/x-icon">
+    <title>Transactions Page</title>
+  </head>
+  <body style="background-color: rgb(20, 20, 43);" >
+   
+
+  <nav class=" lead navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html"><img src="imgs/bank.png" width="70px" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/index.html">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/moneytransfer.html">View All Customers<span class="sr-only">(current)</span></a>
+          </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/contact.html">Contact Us</a>
+            </li>
+
+
+        </ul>
+        <div class="mx-2">
+            <a href="/moneytransfer.html" target="_blank">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#signupModal"><strong>Make Transactions</strong></button>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="userdetails white">
+
+    <h1><strong>Account Holder Name : Pranjal Upadhyay</strong> </h1>
+    <h2><strong>Net Bank Balance :  &#8377<span id="myAccountBalance">25000</strong> </span></h2>
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#sendMoney">
+Send Money
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="sendMoney" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Send Money</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="input-group mb-3">
+                <input type="text" id="enterName" class="form-control" placeholder="Recipient's username"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">@email.com</span>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rs.</span>
+                </div>
+                <input type="text" id="enterAmount" class="form-control" placeholder=" Enter Amount"
+                    aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" onclick=sendMoney() >Send Money</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#history">
+        Transaction History
+  </button>
+  
+
+  <div class="modal fade" id="history" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Transction History</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="transaction-history-body">
+              
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="mx-5">
+<table style="background-color: whitesmoke;" class="table table table-hover my-5">
+    <thead bgcolor="#484f4f" style="color: whitesmoke;">
+      <tr >
+        <th scope="col">S.No</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Bank Balance (in &#8377)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  bgcolor="#e4d1d1">
+        <th scope="row">1</th>
+         <td>Manu Tella</td>
+         <td>Manu@email.com</td>
+        <td><p id="manuBankBalance">4000</p></td>
+      </tr>
+      <tr  bgcolor="#b9b0b0">
+        <th scope="row">2</th>
+         <td>Karishma Sami</td>
+         <td>Karishma@email.com</td>
+        <td><p id="karishmaBankBalance">6300</p></td>
+      </tr>
+      <tr  bgcolor="#d9ecd0">
+        <th scope="row">3</th>
+         <td>Sudarshan Jayaraman</td>
+         <td>Sudarshan@email.com</td>
+        <td><p id="sudarshanBankBalance">7700</p></td>
+      </tr>
+      <tr  bgcolor="#77a8a8">
+        <th scope="row">4</th>
+         <td>Shashi Apte</td>
+         <td>Shashi@email.com</td>
+        <td><p id="shashiBankBalance">8000</p></td>
+      </tr>
+      <tr  bgcolor="#e4d1d1">
+        <th scope="row">5</th>
+         <td>Shivani Rao</td>
+         <td>Shivani@email.com</td>
+        <td><p id="shivaniBankBalance">9800</p></td>
+      </tr>
+      <tr  bgcolor="#b9b0b0">
+        <th scope="row">6</th>
+         <td>Dhruv Baral</td>
+         <td>Dhruv@email.com</td>
+        <td><p id="dhruvBankBalance">10700</p></td>
+      </tr>
+      <tr  bgcolor="#d9ecd0">
+        <th scope="row">7</th>
+         <td>Deepak Pandey</td>
+         <td>Deepak@email.com</td>
+        <td><p id="deepakBankBalance">13600</p></td>
+      </tr>
+      <tr  bgcolor="#77a8a8">
+        <th scope="row">8</th>
+         <td>Saral Batta</td>
+         <td>Saral@email.com</td>
+        <td><p id="SaralBankBalance">16900</p></td>
+      </tr>
+      <tr  bgcolor="#e4d1d1">
+        <th scope="row">9</th>
+         <td>Prasanna Hegde</td>
+         <td>Prasanna@email.com</td>
+        <td><p id="prasannaBankBalance">3000</p></td>
+      </tr>
+      <tr  bgcolor="#e3e0cc">
+        <th scope="row">10</th>
+         <td>Vihaan Ram</td>
+         <td>Vihaan@email.com</td>
+        <td><p id="vihaanBankBalance">4200</p></td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div>
+
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="/index.html" class="nav-link px-2 text-white">Home</a></li>
+      <li class="nav-item"><a href="/moneytransfer.html" class="nav-link px-2 text-white">View All Customers</a></li>
+      <li class="nav-item"><a href="/contact.html" class="nav-link px-2 text-white">Contact Us</a></li>
+    </ul>
+    <p class="text-center text-white">Copyright ©2023 All rights reserved</p>
+  </footer>
+<script src="js/moneytransfer.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+  </body>
+</html>
